@@ -26,7 +26,7 @@ function HomePage() {
       describe :'Local vegetable vendors often face bureaucratic hurdles and regulatory issues related to licensing, permits, and taxes. These issues can be time-consuming and expensive to navigate, and can often result in corruption and harassment by local officials.'
     }]
     let vendor = [{heading:'No. of Vendors', percent:60,des:'~ 4 Million',color:'green'},{heading:'Youngseter Involved', percent:40,des:'40% Under 30 Age',color:'orange'},{heading:'Average Economical Status', percent:10,des:'6-7k per month',color:'red'}]
-    return <><Flex>
+    return <><Flex p={5}>
         <Spacer/>
     <Show above="md">
     <Spline scene="https://prod.spline.design/FXwKsjat9S99IPIQ/scene.splinecode" style={{marginTop:'2rem',height:'30rem',width:'40rem',borderRadius:'1px',boxShadow: 'rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset'}} />
