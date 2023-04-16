@@ -1,5 +1,6 @@
 import { Box, Flex,Image, Spacer,Button,Text } from "@chakra-ui/react"
 import logo from '../logo.svg';
+
 import { Link } from "react-router-dom";
 import {  useState } from "react";
 

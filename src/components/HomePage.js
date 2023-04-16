@@ -8,7 +8,7 @@ function HomePage() {
     useEffect(()=>{
         onOpen()
         setTimeout(()=>onClose(),2000)
-    },[])
+    },[onOpen,onClose])
     let problems = [{
       heading : 'Lack of Access to Capital :',
       describe : 'Many local vegetable vendors operate on a small scale and lack access to formal financial services. This makes it difficult for them to obtain loans or credit to invest in their businesses or expand their operations.' 
