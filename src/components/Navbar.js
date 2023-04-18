@@ -1,6 +1,6 @@
 import { Box, Flex,Image, Spacer,Button,Text,Show, Hide } from "@chakra-ui/react"
 import logo from '../logo.svg';
-import {Drawer, DrawerBody,useDisclosure, DrawerOverlay,DrawerContent,DrawerCloseButton} from '@chakra-ui/react'
+import {Drawer, DrawerBody,useDisclosure, DrawerOverlay,DrawerContent} from '@chakra-ui/react'
 import { Link } from "react-router-dom";
 import React,{  useState } from "react";
 import { DehazeFontIcon } from "@react-md/material-icons";
@@ -49,14 +49,12 @@ function Navbar(params) {
                     size={'xs'}
                 >
                     <DrawerOverlay />
-                    <DrawerContent >
-                    <DrawerCloseButton size={'lg'} />
-
+                    <DrawerContent onClick={onClose}>
                     <DrawerBody>
 
                     {page.map((e)=>{
                         return <Box>
-                        <Link  key={e[0]} to={e[1]} onClick={()=>{setAbc((prev)=>prev+1); onClose()}}>
+                        <Link  key={e[0]} to={e[1]} onClick={()=>{setAbc((prev)=>prev+1)}}>
                             <Button marginBottom={4} colorScheme="green" abc={abc} variant={url===(e[1])?'solid':'ghost'} size={'md'}>{e[0]}</Button>
                         </Link>
                         </Box>
