@@ -23,12 +23,18 @@ function About(params) {
     }]
     return <> 
     <Navbar/>
-    <Box p={10}>
+    <Box p={5} paddingBottom={0}>
+    </Box>
+    <Box p={10} paddingTop={7}>
+
         <Box>
-        <Heading marginBottom={4}>
-                Timeline
-            </Heading>
+            <Flex flexDirection={'row'} alignItems={'center'}>
+                <Image src="./Image/v4.png" fit='contain' boxSize={'150px'} />
+                <Heading marginBottom={4}>
+                        Timeline
+                </Heading>
             
+            </Flex>
             <Show above='md'>
                 <Box>
                     <Flex alignItems={'center'}>
