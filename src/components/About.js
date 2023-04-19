@@ -2,6 +2,7 @@ import { Box,Heading,Text,SimpleGrid,Card,CardBody,CardFooter,Image,Flex, Spacer
 import React from "react";
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import Navbar from './Navbar'
 
 function About(params) {
     let team=[{
@@ -20,7 +21,9 @@ function About(params) {
         instagram:'https://www.instagram.com/shritish.shete/',
         linkedin:'https://www.linkedin.com/in/shritish-shete'
     }]
-    return <Box p={10}>
+    return <> 
+    <Navbar/>
+    <Box p={10}>
         <Box>
         <Heading marginBottom={4}>
                 Timeline
@@ -57,7 +60,7 @@ function About(params) {
                         <Heading>2021-22</Heading>
                     </Flex>
                     <Flex alignItems={'center'}>
-                        <Heading>2022</Heading>
+                        <Heading>2022-23</Heading>
                         {/* <iframe width="180" height="315"  src="http://www.youtube.com/embed/dURrqFasAnA?autoplay=1&loop=1&showinfo=0"></iframe> */}
                         <Spacer/>
                         <Text maxWidth={'500px'} align={'justify'}>Later, they were joined by co-founders Shritish, known for his multitasking abilities and out-of-the-box thinking, as well as team members Vipul, Mansi, Hritika and Rushikesh. In 2022, due to most team members being in their final year of college and having job offers in hand, they decided to pause all operations and gain corporate experience first before coming back together after a period of time, possibly a year, to resume their startup plans. However, founder Sarthak continued working on the Wayndor project with Sanket.</Text>
@@ -121,7 +124,7 @@ function About(params) {
                 <AccordionItem>
                     <AccordionButton>
                         <Box as="span" flex='1' textAlign='left'>
-                        <Heading size={'md'}>2022</Heading>
+                        <Heading size={'md'}>2022-23</Heading>
                         </Box>
                         <AccordionIcon />
                     </AccordionButton>
@@ -154,6 +157,7 @@ function About(params) {
             </SimpleGrid>
         </Box>
     </Box>
+    </>
 }
 
 export default About
