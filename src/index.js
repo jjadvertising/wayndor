@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { ChakraProvider , extendTheme } from '@chakra-ui/react';
-
+import "@fontsource/cabin/400.css"
 const customTheme = extendTheme({
   semanticTokens: {
     colors: {
@@ -13,6 +13,17 @@ const customTheme = extendTheme({
       button: '#C9FFA6'
     },
   },
+  components:{
+    Text:{
+      variants:{
+        new:{
+          fonts: {
+            body: `"Cabin", sans-serif`,
+          }
+        }
+      }
+    }
+  }
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -1,23 +1,43 @@
 import { Show,Box,Text,Flex,Image, Spacer,Button,useDisclosure } from "@chakra-ui/react";
-import React from "react";
+import React,{useState} from "react";
 import { Navigate,Link } from "react-router-dom";
 import SimpleImageSlider from "react-simple-image-slider";
 import logo from '../logo.svg';
 import ContactUs from "./ContactUs";
+import ReactTextTransition from "react-text-transition";
 
 function Landing(){
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const [paragraphIndex, setParagraphIndex] = useState(0);
     const images = [
         "./Image/vegetable-seller-3.jpeg",
         "./Image/vegetable-seller-4.jpeg",
         "./Image/vegetable-seller-2.jpeg",
     ];
+    const paragraphs = [['Chacha ke Vyapar ka ','naya adhar'],['Bhaiya ke Vyapar ke liye ','nayi soch'],['Is Vyapar me hum apke ','sath hain']]
     const page = [['Home','/home'],['About','/about'],['Opportunity','/opportunity']]
     return <>
         <Show below='md'>
             <Navigate to='/home'/>
         </Show>
-        <Box position={'absolute'} width={'100vw'} height={'90vh'} p={10} zIndex={0} bgColor={'black'} ></Box>
+        <Box position={'absolute'} width={'100vw'} height={'90vh'} p={10} zIndex={0} bgColor={'black'} >
+        </Box>
+        {/* <Box position={'absolute'} width={'100vw'} height={'90vh'} p={10}  > */}
+            <Box mt={'20vh'} position={'absolute'} ml={'40vw'} zIndex={4}>
+                <React.Fragment >
+                    <ReactTextTransition className="big">
+                        <Flex>
+                            <Text variant={'new'} fontSize={'4xl'} w='600px' p={3} align={'right'} colorScheme="white" color={'white'}>
+                                {paragraphs[paragraphIndex%3][0]}
+                            </Text>
+                            <Text fontSize={'4xl'}  p={3} align={'right'} colorScheme="white" color={'white'} bgColor={'#e2312b'}>
+                                {paragraphs[paragraphIndex%3][1]}
+                            </Text>
+                        </Flex>
+                    </ReactTextTransition>
+                </React.Fragment>
+            </Box>
+        {/* </Box> */}
         <Box position={'absolute'} width={'100vw'} p={10} zIndex={2} bgColor={'black'} opacity={0.3}></Box>
         <Box position={'absolute'} width={'100vw'} p={1} zIndex={3} >
         <Flex alignItems={'center'} >
@@ -31,11 +51,14 @@ function Landing(){
         width={'100vw'}
         height={'90vh'}
         images={images}
-        showBullets={true}
-        showNavs={true}
         autoPlay={true}
         slideDuration={0.5}
         style={{opacity:0.7}}
+        onStartSlide={(idx)=>{
+            setTimeout(() => {
+                setParagraphIndex((prev)=>prev+1)
+            }, 2500);
+        }}  
       />
         <Flex flexDirection={'column'} justifyContent={'center'} height={'10vh'}> 
             <Flex alignItems={'center'}>
