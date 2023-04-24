@@ -10,9 +10,9 @@ function Landing(){
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [paragraphIndex, setParagraphIndex] = useState(0);
     const images = [
-        "./Image/vegetable-seller-3.jpeg",
         "./Image/vegetable-seller-4.jpeg",
         "./Image/vegetable-seller-2.jpeg",
+        "./Image/vegetable-seller-3.jpeg",
     ];
     const paragraphs = [['Chacha ke Vyapar ka ','naya adhar'],['Bhaiya ke Vyapar ke liye ','nayi soch'],['Is Vyapar me hum apke ','sath hain']]
     const page = [['Home','/home'],['About','/about'],['Opportunity','/opportunity']]
@@ -23,7 +23,7 @@ function Landing(){
         <Box position={'absolute'} width={'100vw'} height={'90vh'} p={10} zIndex={0} bgColor={'black'} >
         </Box>
         {/* <Box position={'absolute'} width={'100vw'} height={'90vh'} p={10}  > */}
-            <Box mt={'20vh'} position={'absolute'} ml={'40vw'} zIndex={4}>
+            <Box mt={'20vh'} position={'absolute'} ml={'36vw'} zIndex={4}>
                 <React.Fragment >
                     <ReactTextTransition className="big">
                         <Flex>
@@ -55,9 +55,7 @@ function Landing(){
         slideDuration={0.5}
         style={{opacity:0.7}}
         onStartSlide={(idx)=>{
-            setTimeout(() => {
-                setParagraphIndex((prev)=>prev+1)
-            }, 2500);
+            setParagraphIndex(idx-1)
         }}  
       />
         <Flex flexDirection={'column'} justifyContent={'center'} height={'10vh'}> 
