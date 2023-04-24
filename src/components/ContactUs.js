@@ -1,9 +1,49 @@
-import React from 'react'
-import {Modal,ModalOverlay,ModalContent,ModalFooter,ModalBody,Button,Image,Flex,Text, Spacer, Box, Input, FormLabel  } from '@chakra-ui/react'
+import React, { useState } from 'react'
+import {Modal,ModalOverlay,ModalContent,ModalFooter,ModalBody,Button,Image,Flex,Text, Spacer, Box, Input  } from '@chakra-ui/react'
 import { LocationOnFontIcon,PhoneFontIcon,EmailFontIcon } from "@react-md/material-icons";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { FormControl,FormErrorMessage} from '@chakra-ui/react'
+import './smtp.js'
 function ContactUs({isOpen,onClose}) {
+    const [err,setErr] = useState({
+      boolean:false,
+      error:''
+    })
+    const [input,setInput]=useState({
+      name:'',
+      email:'',
+      description:''
+    })
+    function checkEmail(e) {
+      changeInput(e)
+      const pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+      if(e.target.value.match(pattern)){
+        setErr({
+          boolean:false,
+          error:''
+        })
+      }else{
+        setErr({
+          boolean:true,
+          error:'Invalid Email'
+        })
+      }
+    }
+    function changeInput(e) {
+      setInput({
+        ...input,
+        [e.target.name]:e.target.value
+      })
+    }
+    function submitData(params) {
+
+      // const client = new SMTPClient({
+      //   user: 'user',
+      //   password: 'password',
+      //   host: 'smtp.your-email.com',
+      //   ssl: true,
+      // });
+    }
     return (<>
       <Modal size={'lg'} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -15,24 +55,30 @@ function ContactUs({isOpen,onClose}) {
                 <Text fontSize={'sm'}>Nagpur</Text>
               </Flex> 
               <Spacer/>
+                <a target='_blank' rel='noreferrer' href='tel:1234567890'>
               <Flex p={2} flexDirection={'column'} alignItems={'center'} width={'140px'}>
                 <PhoneFontIcon/>
-                <a href='tel:1234567890'><Text fontSize={'sm'}>+91 1234567890</Text></a>
+                  <Text fontSize={'sm'}>+91 1234567890</Text>
               </Flex> 
+                  </a>
               <Spacer/>
             </Flex>
             <hr/>
             <Flex>
               <Spacer/>
+                <a target='_blank' rel='noreferrer' href='mailto:dummy@wayndor.com'>
               <Flex p={2} flexDirection={'column'} alignItems={'center'} width={'140px'}>
                 <EmailFontIcon/>
-                <a href='mailto:dummy@wayndor.com'><Text fontSize={'sm'}>dummy@wayndor.com</Text></a>
+                  <Text fontSize={'sm'}>dummy@wayndor.com</Text>
               </Flex> 
+                  </a>
               <Spacer/>
+                <a target='_blank' rel='noreferrer' href='https://www.linkedin.com/company/wayndor/'>
               <Flex p={2} flexDirection={'column'} alignItems={'center'} width={'140px'}>
                 <LinkedInIcon/>
-                <a href='linkedin.com/wayndor'><Text fontSize={'sm'}>Wayndor</Text></a>
+                  <Text fontSize={'sm'}>Wayndor</Text>
               </Flex> 
+                  </a>
               <Spacer/>
             </Flex>
           <ModalBody>
@@ -41,14 +87,14 @@ function ContactUs({isOpen,onClose}) {
               <Spacer/>
               <Box>
                 <FormControl mb={5} isRequired>
-                  <Input type='text' placeholder='Enter Your Name'/>
+                  <Input onChange={changeInput} type='text' name='name' placeholder='Enter Your Name'/>
                 </FormControl>
-                <FormControl mb={5} isInvalid={true} isRequired>
-                  <Input type='email' placeholder='Email Address'/ >
-                  <FormErrorMessage>Invalid Email</FormErrorMessage>
+                <FormControl mb={5} isInvalid={err.boolean} isRequired>
+                  <Input type='email' onChange={checkEmail} name='email' placeholder='Email Address' />
+                  <FormErrorMessage>{err.error}</FormErrorMessage>
                 </FormControl>
                 <FormControl  isRequired>
-                  <Input type='text' placeholder='Enter Inquiry' height={'70px'}/>
+                  <Input onChange={changeInput} type='text' name='description' placeholder='Enter Inquiry' height={'70px'}/>
                 </FormControl>
               </Box>
               <Spacer/>
@@ -59,7 +105,7 @@ function ContactUs({isOpen,onClose}) {
             <Button colorScheme='blue' mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant='ghost'>Semd</Button>
+            <Button variant='ghost' onClick={submitData}>Send</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
