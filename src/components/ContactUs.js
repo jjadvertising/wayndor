@@ -3,7 +3,7 @@ import {Modal,ModalOverlay,ModalContent,ModalFooter,ModalBody,Button,Image,Flex,
 import { LocationOnFontIcon,PhoneFontIcon,EmailFontIcon } from "@react-md/material-icons";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { FormControl,FormErrorMessage} from '@chakra-ui/react'
-import './smtp.js'
+import Email from './smtp.js'
 function ContactUs({isOpen,onClose}) {
     const [err,setErr] = useState({
       boolean:false,
@@ -37,12 +37,19 @@ function ContactUs({isOpen,onClose}) {
     }
     function submitData(params) {
 
-      // const client = new SMTPClient({
-      //   user: 'user',
-      //   password: 'password',
-      //   host: 'smtp.your-email.com',
-      //   ssl: true,
-      // });
+      Email.send({
+        Host : "smtp.elasticemail.com",
+        Username : "justjugaadadvertising@gmail.com",
+        Password : "61F138F5352E4A74118E0DED021B97094409",
+        To : 'sanketsapatevnit@gmail.com',
+        From : 'justjugaadadvertising@gmail.com',
+        Subject : `New Enquiry from ${input.name}`,
+        Body : `Name : ${input.name}<br> Email : ${input.email} <br> Query : ${input.description}`
+    }).then(
+      message => alert(message)
+    ).catch(
+      message => alert(message)
+    )
     }
     return (<>
       <Modal size={'lg'} isOpen={isOpen} onClose={onClose}>
