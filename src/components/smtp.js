@@ -1,4 +1,4 @@
-﻿// SmtpJS.com - v3.0.0 
+
 var Email = { send: function (a) { 
     return new Promise(function (n, e) { 
         a.nocache = Math.floor(1e6 * Math.random() + 1);
@@ -9,6 +9,13 @@ var Email = { send: function (a) {
         a.onload = function () { var e = a.responseText; null != t && t(e) }; a.send(n) }, ajax: function (e, n) { var t = Email.createCORSRequest("GET", e); 
         t.onload = function () { var e = t.responseText; null != n && n(e) }; t.send() }, 
         createCORSRequest: function (e, n) { var t = new XMLHttpRequest(); 
-        return "withCredentials" in t ? t.open(e, n, !0) : false, t } };
+            console.log(t)
+            if ("withCredentials" in t) {
+                t.open(e, n, true);
+              } else {
+                console.log(t);
+              }
+              return t;
+               } };
 
 export default Email
