@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import {Modal,ModalOverlay,ModalContent,ModalFooter,ModalBody,Button,Image,Flex,Text, Spacer, Box, Input  } from '@chakra-ui/react'
+import {Modal,ModalOverlay,ModalContent,ModalFooter,ModalBody,Button,Image,Flex,Text, Spacer, Box, Input,Alert,AlertIcon  } from '@chakra-ui/react'
 import { LocationOnFontIcon,PhoneFontIcon,EmailFontIcon } from "@react-md/material-icons";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { FormControl,FormErrorMessage} from '@chakra-ui/react'
 import Email from './smtp.js'
 function ContactUs({isOpen,onClose}) {
+    const [alert,setAlert] = useState({success:false,error:false,input:false})
     const [err,setErr] = useState({
       boolean:false,
       error:''
@@ -36,20 +37,50 @@ function ContactUs({isOpen,onClose}) {
       })
     }
     function submitData(params) {
-
-      Email.send({
-        Host : "smtp.elasticemail.com",
-        Username : "justjugaadadvertising@gmail.com",
-        Password : "61F138F5352E4A74118E0DED021B97094409",
-        To : 'sanketsapatevnit@gmail.com',
-        From : 'justjugaadadvertising@gmail.com',
-        Subject : `New Enquiry from ${input.name}`,
-        Body : `Name : ${input.name}<br> Email : ${input.email} <br> Query : ${input.description}`
-    }).then(
-      message => alert(message)
-    ).catch(
-      message => alert(message)
-    )
+      if(alert.success){
+        setAlert({
+          ...alert,
+          error:false,
+          input:false
+        })
+        return 
+      }
+      if(input.name!==''&&input.email!==''&&input.description!==''){
+        setAlert({
+          ...alert,
+          input:false
+        })
+        Email.send({
+          Host : "smtp.elasticemail.com",
+          Username : "justjugaadadvertising@gmail.com",
+          Password : "61F138F5352E4A74118E0DED021B97094409",
+          To : '<sanketsapatevnit@gmail.com>,<er.sarthakkale@gmail.com>',
+          From : `${input.name}<justjugaadadvertising@gmail.com>`,
+          Subject : `New Enquiry from ${input.name}`,
+          Body : `Name : ${input.name}<br> Email : ${input.email} <br> Query : ${input.description}`
+        }).then(
+          setAlert({
+            error:false,
+            input:false,
+            success:true
+          })
+        ).catch((e)=>{
+          console.log(e)
+          setAlert({
+            ...alert,
+            success:false,
+            error:true
+          })
+        }
+        )
+      }
+      else{
+        setAlert({
+          success:false,
+          error:false,
+          input:true
+        })
+      }
     }
     return (<>
       <Modal size={'lg'} isOpen={isOpen} onClose={onClose}>
@@ -90,7 +121,7 @@ function ContactUs({isOpen,onClose}) {
             </Flex>
           <ModalBody>
             <Flex alignItems={'center'}>
-              <Image src="./Image/v2.png" fit='contain' boxSize={'150px'} />
+              <Image src="https://raw.githubusercontent.com/jjadvertising/wayndor-website-content/main/v2.png" fit='contain' boxSize={'150px'} />
               <Spacer/>
               <Box>
                 <FormControl mb={5} isRequired>
@@ -109,11 +140,23 @@ function ContactUs({isOpen,onClose}) {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
+            <Button variant='ghost'  mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant='ghost' onClick={submitData}>Send</Button>
+            <Button colorScheme='blue' variant={input.name!==''&&input.email!==''&&input.description!==''?'solid':'ghost'} onClick={submitData} >Send</Button>
           </ModalFooter>
+          {alert.success?<Alert borderBottomRadius={5} status='success' variant='subtle'>
+            <AlertIcon />
+            Enquiry forwarded to the Team
+          </Alert>:''}
+          {alert.error?<Alert borderBottomRadius={5} status='error' variant='subtle'>
+            <AlertIcon />
+            Failed. Please try again later!
+          </Alert>:''}
+          {alert.input?<Alert borderBottomRadius={5} status='error' variant='subtle'>
+            <AlertIcon />
+            Please fill all fields! 
+          </Alert>:''}
         </ModalContent>
       </Modal>
     </>)

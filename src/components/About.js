@@ -29,7 +29,7 @@ function About(params) {
 
         <Box>
             <Flex flexDirection={'row'} alignItems={'center'}>
-                <Image src="./Image/v4.png" fit='contain' boxSize={'150px'} />
+                <Image src="https://raw.githubusercontent.com/jjadvertising/wayndor-website-content/main/v4.png" fit='contain' boxSize={'150px'} />
                 <Heading marginBottom={4}>
                         Timeline
                 </Heading>
@@ -69,7 +69,7 @@ function About(params) {
                         <Heading>2022-23</Heading>
                         {/* <iframe width="180" height="315"  src="http://www.youtube.com/embed/dURrqFasAnA?autoplay=1&loop=1&showinfo=0"></iframe> */}
                         <Spacer/>
-                        <Text maxWidth={'500px'} align={'justify'}>Later, they were joined by co-founders Shritish, known for his multitasking abilities and out-of-the-box thinking, as well as team members Vipul, Mansi, Hritika and Rushikesh. In 2022, due to most team members being in their final year of college and having job offers in hand, they decided to pause all operations and gain corporate experience first before coming back together after a period of time, possibly a year, to resume their startup plans. However, founder Sarthak continued working on the Wayndor project with Sanket.</Text>
+                        <Text maxWidth={'500px'} align={'justify'}>Later, they were joined by co-founders Shritish, known for his multitasking abilities and out-of-the-box thinking, as well as team members Vipul, Mansi, Hritika, Nayan and Rushikesh. In 2022, due to most team members being in their final year of college and having job offers in hand, they decided to pause all operations and gain corporate experience first before coming back together after a period of time, possibly a year, to resume their startup plans. However, founder Sarthak continued working on the Wayndor project with Sanket.</Text>
                         <Spacer/>
                         <Image boxSize={'300px'} src="https://images.unsplash.com/photo-1681664036682-26abfaafc0c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" fit={'contain'} />
                     </Flex>
@@ -150,7 +150,7 @@ function About(params) {
                 {team.map((e)=>{
                     return <Card key={e.image} variant={'outline'}>
                     <CardBody>
-                        <Image src={`./Team/${e.image}`} />
+                        <Image src={`https://raw.githubusercontent.com/jjadvertising/wayndor-website-content/main/${e.image}`} />
                     </CardBody>
                     <Text alignSelf={'center'} fontSize='2xl'>{e.name}</Text>
                     <CardFooter justify='center'>

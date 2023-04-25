@@ -72,7 +72,7 @@ function HomePage() {
       <Box>
         <Heading>Major Problems</Heading>
         <Flex alignItems={'center'} flexDirection={{base:'column',md:'row'}}>
-        <Image src="./Image/v61.png" fit='contain' boxSize={'150px'} />
+        <Image src="https://raw.githubusercontent.com/jjadvertising/wayndor-website-content/main/v61.png" fit='contain' boxSize={'150px'} />
         <Tabs paddingTop={2} isFitted variant='soft-rounded' colorScheme='green'>
           <TabList>
             <Tab>One</Tab>

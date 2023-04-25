@@ -10,9 +10,9 @@ function Landing(){
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [paragraphIndex, setParagraphIndex] = useState(0);
     const images = [
-        "./Image/vegetable-seller-4.jpeg",
-        "./Image/vegetable-seller-2.jpeg",
-        "./Image/vegetable-seller-3.jpeg",
+        "https://raw.githubusercontent.com/jjadvertising/wayndor-website-content/main/vegetable-seller-4.jpeg",
+        "https://raw.githubusercontent.com/jjadvertising/wayndor-website-content/main/vegetable-seller-2.jpeg",
+        "https://raw.githubusercontent.com/jjadvertising/wayndor-website-content/main/vegetable-seller-3.jpeg",
     ];
     const paragraphs = [['Chacha ke Vyapar ka ','naya adhar'],['Bhaiya ke Vyapar ke liye ','nayi soch'],['Is Vyapar me hum apke ','sath hain']]
     const page = [['Home','/home'],['About','/about'],['Opportunity','/opportunity']]

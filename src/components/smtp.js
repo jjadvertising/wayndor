@@ -8,8 +8,7 @@ var Email = { send: function (a) {
         a.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         a.onload = function () { var e = a.responseText; null != t && t(e) }; a.send(n) }, ajax: function (e, n) { var t = Email.createCORSRequest("GET", e); 
         t.onload = function () { var e = t.responseText; null != n && n(e) }; t.send() }, 
-        createCORSRequest: function (e, n) { var t = new XMLHttpRequest(); 
-            console.log(t)
+        createCORSRequest: function (e, n) { var t = new XMLHttpRequest();
             if ("withCredentials" in t) {
                 t.open(e, n, true);
               } else {
